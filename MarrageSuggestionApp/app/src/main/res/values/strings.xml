@@ -8,4 +8,8 @@
     <string name="get_married">趕快結婚!</string>
     <string name="find_couple">開始找對象</string>
     <string name="male">male</string>
+    <string-array name="gender_list">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
 </resources>

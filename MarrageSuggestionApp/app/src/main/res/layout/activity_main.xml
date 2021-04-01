@@ -22,30 +22,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.046" />
 
-    <EditText
-        android:id="@+id/edtGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:text="@string/age"
         android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="@+id/edtGender"
+        app:layout_constraintEnd_toEndOf="@+id/spnGender"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtGender"
-        app:layout_constraintTop_toBottomOf="@+id/edtGender" />
+        app:layout_constraintStart_toStartOf="@+id/spnGender"
+        app:layout_constraintTop_toBottomOf="@+id/spnGender" />
 
     <EditText
         android:id="@+id/edtAge"
@@ -82,5 +69,16 @@
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="@+id/btnDo"
         app:layout_constraintTop_toBottomOf="@+id/btnDo" />
+
+    <Spinner
+        android:id="@+id/spnGender"
+        android:layout_width="117dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="32dp"
+        android:entries="@array/gender_list"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

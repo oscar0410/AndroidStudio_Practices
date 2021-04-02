@@ -8,6 +8,14 @@
     <string name="get_married">趕快結婚!</string>
     <string name="find_couple">開始找對象</string>
     <string name="male">male</string>
+    <string name="radbtn_male">男生</string>
+    <string name="radbtn_female">女生</string>
+    <string name="radbtn_male_age1">小於28歲</string>
+    <string name="radbtn_male_age2">28~33歲</string>
+    <string name="radbtn_male_age3">大於33歲</string>
+    <string name="radbtn_female_age1">小於25歲</string>
+    <string name="radbtn_female_age2">25~30歲</string>
+    <string name="radbtn_female_age3">大於30歲</string>
     <string-array name="gender_list">
         <item>男</item>
         <item>女</item>

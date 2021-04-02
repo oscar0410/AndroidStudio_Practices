@@ -4,21 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    // EditText物件
-    private EditText mEdtAge;
-    // TextView物件
+        // TextView物件
     private TextView mTxtResult;
     // Button物件
     private Button mBtnDo;
-    // 性別
-    private String msGender;
+    // RadioGroup物件
+    private RadioGroup mRadGrpGender, mRadGrpAge;
+    // RadioButton物件
+    private RadioButton mRadBtnAge1 , mRadBtnAge2, mRadBtnAge3;
+
 
 
     @Override
@@ -27,67 +27,55 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // 連結介面元件
-
-        mEdtAge = findViewById(R.id.edtAge);
         mTxtResult = findViewById(R.id.textResult);
         mBtnDo = findViewById(R.id.btnDo);
 
         // 設定按鈕觸發事件
         mBtnDo.setOnClickListener(btnDoOnClick);
 
-        Spinner spnGender = findViewById(R.id.spnGender);
 
-        spnGender.setOnItemSelectedListener(spnGenderOnItemSelected);
+        mRadGrpGender = findViewById(R.id.radGrpGender);
+        mRadGrpAge = findViewById(R.id.radGrpAge);
+        mRadBtnAge1 = findViewById(R.id.radBtnAge1);
+        mRadBtnAge2 = findViewById(R.id.radBtnAge2);
+        mRadBtnAge3 = findViewById(R.id.radBtnAge3);
+
+        mRadGrpGender.setOnCheckedChangeListener(radGrpGenderOnCheckedChage);
     }
     private View.OnClickListener btnDoOnClick = new View.OnClickListener(){
         @Override
         public void onClick(View v){
-            // 取得年齡
-            int age = Integer.parseInt(mEdtAge.getText().toString());
             // 從字串資源取出預先定義好的suggestion字串
             String suggestion = getString(R.string.suggestion);
 
-            //判斷性別
-            if(msGender.equals(getString(R.string.male))){
-                if(age<28){
-                    suggestion += getString(R.string.not_hurry);
-                }else if(age>33){
-                    suggestion += getString(R.string.get_married);
-                }else{
+            switch(mRadGrpAge.getCheckedRadioButtonId()){
+                case R.id.radBtnAge1 :
+                    suggestion+= getString(R.string.not_hurry);
+                    break;
+                case R.id.radBtnAge2 :
                     suggestion += getString(R.string.find_couple);
-                }
-            }else{
-                if(age<25){
-                    suggestion += getString(R.string.not_hurry);
-                }else if(age>30){
+                    break;
+                case R.id.radBtnAge3:
                     suggestion += getString(R.string.get_married);
-                }else{
-                    suggestion += getString(R.string.find_couple);
-                }
+                    break;
             }
-
             // 輸出結果
             mTxtResult.setText(suggestion);
         }
     };
 
-    private AdapterView.OnItemSelectedListener spnGenderOnItemSelected = new AdapterView.OnItemSelectedListener() {
+    private RadioGroup.OnCheckedChangeListener radGrpGenderOnCheckedChage = new RadioGroup.OnCheckedChangeListener() {
         @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            switch (position){
-                case 0:
-                    msGender = getString(R.string.male);
-                    break;
-                case 1:
-                    msGender = "";
-                    break;
+        public void onCheckedChanged(RadioGroup radionGroup, int checkedId) {
+            if(checkedId == R.id.radBtnMale){
+                mRadBtnAge1.setText(R.string.radbtn_male_age1);
+                mRadBtnAge2.setText(R.string.radbtn_male_age2);
+                mRadBtnAge3.setText(R.string.radbtn_male_age3);
+            } else {
+                mRadBtnAge1.setText(R.string.radbtn_female_age1);
+                mRadBtnAge2.setText(R.string.radbtn_female_age2);
+                mRadBtnAge3.setText(R.string.radbtn_female_age3);
             }
         }
-
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
-
-        }
-
     };
 }
